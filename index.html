@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>Document</title>
+</head>
+<body>
+	<!-----
+		html
+					
+			<head>
+				<meta charset="UTF-8" />
+				<!----编码的标签需要在1024kb之内------>
+				<meta  http-equiv="x-ua-compatile"  content="ie=edge"/>
+				<!-----显示的最新的浏览器渲染模式-------->
+				<!----- ie11弃用此模式------>
+				<title>理财网站</title>
+				<meta name="viewport"  content="width=device-width,initial-scale=1"/>
+				<!----统一视口宽度----->
+			</head>
+		    
+		    <!---[if lte IE8 ]->
+				<p>如果小于等于ie8 这个代码 就会 显示出来  这就是一个提示 </p>
+			<!--[endif]-->
+			
+			//ie8 不支持媒体查询 和html5的标签
+		
+		    html中定义样式 是最好用class 如果不是进行dom操作 最好使用calss
+		    
+		    logo  用img 
+		    
+		    其他的放置background中
+		    
+		  轮播图的话  最好把img 放置到  一个块元素里边  方便js进行操作
+		
+		css
+		
+		
+		*原则是   宽度用百分比
+		
+		*高的和 padding margin 用px  或者 em
+		
+		1.reset.css  最好使用 Normalize.css  来进行页面的 样式重置      
+		
+		 优点:保护了有价值样式   符合现代的样式标准 没有大段的样式继承链  修复了页面端的bug
+		
+		如果需要修改在新的css样式中修改就可以了
+		
+		2.调整  font-size
+		
+		html{
+			font-size:62.5%;//浏览器默认是 16px     62.5%  就是  10px  这样会好计算
+			color:#222;
+		}
+		
+		响应相对的 距离
+		
+		em  是相对  的 他是相对他父元素的font-size    找到最接近 设置字体大小的父元素
+		
+		浏览器 1em  是 16px
+		
+		rem  是相对参照物是根元素  根据 html的字体设置    如果没有设置找到 浏览器的 16px
+		
+		
+		rem 大部分 ;浏览器是支持的 
+		
+		如果要是兼容  就在下边写两个 例
+		{
+			font-size:1rem;
+			font-size:16px;//这样就兼容了
+		}
+		
+		::selection{
+			/*
+			 默认选中文字的 颜色
+			 * */
+			background-color:red;
+			text-shadow:none;
+		}
+		
+		
+		
+		 工具样式
+			 * */
+			.center-block{
+				display:block;
+				margin-right:auto;
+				margin-left:auto;
+				/*
+				 
+				 * 在父元素中居中显示
+				 * */
+			}
+			
+			.pull-right{
+			   float:right !important;	
+			}
+			
+			.pull-left{
+				float:left !important;
+			}
+			
+			.text-right{
+				text-align: right !important;
+			}
+			.text-left{
+				text-align:left !important;
+			}
+			
+			.text-center{
+				text-align:center !important;
+			}
+			
+			.hide{
+				display:none !important;
+			}
+			
+			.show{
+				display:block !important;
+			}
+			
+			
+			.invisible{
+				visibility:hidden;
+				/*
+				 
+				 * 这个是隐藏   只不过  他是站位
+				 * 
+				 * */
+			}
+			
+			.text-hide{
+				font:0/0 a;
+				color:transparent;
+				text-shadow:none;
+				background-color:transparent;
+				border:0;
+			}
+			/*
+			 
+			 * 隐藏文本
+			 * */
+			
+			
+			
+			
+		    /*
+			 清除浮动
+			 * */
+			
+			
+			.clearfix:before,.clearfix:after{
+				content:' ';
+				display:table;
+			}
+			
+			.clearfix:after{
+				clear:both;
+			}
+			
+			
+			.clearfix{
+				zoom:1;
+			}
+			
+			
+			第二种(推荐)
+			.clearfix:after{
+				content:' ';
+				display:block;
+				height:0;
+				clear:both;
+				visbility:hidden;
+			}
+			
+			.clearfix{
+				zoom:1;
+			}
+			
+			
+			
+			bfc
+			
+			   块级格式化上下文
+			
+			
+			
+			
+			header .top ul li+li{
+					/*
+					 * 这个选择器
+					 */
+					 他表示选中 后面的所有的元素   没有选中第一个元素
+					 * */
+					border-left:1px solid #999;
+					margin-left:-3px;
+					/*
+					 因为inline-block 有空隙  html中存在的空白字符  这个字符是空格符的一半  空格大小时 7px  所以 空白符  就是3px
+					 * */
+				}
+							
+			width:calc(33% - 3rem); 属性的计算
+			
+			//或者加上 box-sizing{
+				border-box
+			}
+			
+			如果有的属性需要加前缀的话  使用   Autopreflxer CSS online    把代码 贴在上边  就会给需要加前缀的加前缀
+			
+			
+			
+			
+			如何实现移动端的样式
+			
+			
+			*如果实现移动端样式  在需要更改的附近进行样式 更改
+			
+			
+			800px 中等 屏幕的分界线
+			
+			
+			
+			480作为小屏幕的分界线
+			
+						
+				@media only screen and (max-width:50em){
+				/*这里边的rem的设置时浏览器的设置  而不是 html的设置  所以   他的字体是16  而不是10*/
+				/*
+				 
+				 * 那这样可以用em
+				 * */
+				/*
+				 * 表示 800像素  以下  含800
+				 
+				 * */
+				
+				header .top ul li a{
+					
+					padding:0 1rem;
+					
+				}
+				header .main .brand{
+								float:none;
+								margin:1.5rem auto 2rem;
+								text-align:center;
+								display:block;
+							}
+							
+				header .main ul{
+					text-align:center;
+				}
+				
+				header .main ul li{
+				  border:none;
+				} 
+				
+				
+				header .main ul li a{
+					padding:0 1.5rem;
+				}
+				
+							     		
+				
+			}
+			
+			@media only screen and (min-width:30.0625em) and (max-width:50em){
+				
+					/*
+				 * 表示 481到 800  之间
+				  
+				 * */
+				
+							     		
+				
+			}
+			
+			@media only screen and (max-width:30em){
+					/*
+				 * 表示 480像素  
+				 * 
+				 * 如果样式要是在  480px  以下    第一个样式 @media only screen and (max-width:800px)  也会被继承
+				 
+				 * */
+				
+					header .top .tel,header .top ul li:nth-child(3),header .top ul li:nth-child(4){
+					
+						display:none;
+					
+					}
+					
+					header .main ul li{
+							  line-height:3rem;
+							} 
+				
+					header .main ul li:first-child{
+							  display:none;
+							} 
+					header .main ul li a{
+								font-weight:normal;
+								padding:0 0.5rem;
+							}	
+			
+			
+			}
+			
+			
+	--------->
+	
+</body>
+</html>
